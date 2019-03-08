@@ -21,6 +21,9 @@ ENV APP_NAME="Calibre"
 ENV WIDTH=1280
 ENV HEIGHT=720
 
+# Default to always update
+ENV EDGE=1
+
 # Use baseimage-docker's init system
 CMD ["/sbin/my_init"]
 
