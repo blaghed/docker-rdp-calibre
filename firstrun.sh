@@ -9,6 +9,12 @@ chmod -R g+rw /config
 if [ ! "$EDGE" = "1" ]; then
   echo "EDGE not requested, keeping stable version"
 else
-  echo "EDGE requested, updating to latest version"
-  wget -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | sudo python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()"
+  echo "EDGE requested"
+  if [ -z ${VERSION} ]; then 
+    echo "var is unset";
+    wget -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | sudo python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()"
+  else
+    echo "Updating to version $VERSION"
+    wget -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | sudo python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main(version=$VERSION)"
+  fi
 fi
