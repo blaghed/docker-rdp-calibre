@@ -1,4 +1,8 @@
-_This is just to keep the underlying calibre up do date, while exposing the 9090 port_
+Intention:
+- Exposes the 9090 port
+- Enables the auto-updated by default via EDGE variable
+- Allows setting the target Calibre version to use via VERSION variable (e.g.: `VERSION="3.48.0"`)
+Rest is the same as the base aptalca image.
 
 # Calibre GUI and Server
 
